@@ -3439,8 +3439,7 @@ fn influx_time_expr_re() -> &'static Regex {
         let offset = format!(r"(?:[+-]\s*)?{}(?:\s*[+-]\s*{})*", dur, dur);
         let abs = format!(r"'[^']*'(?:\s*{})?", offset);
         let now = format!(r"(?i)now\s*\(\s*\)(?:\s*{})?", offset);
-        let pure = format!(r"{}", offset);
-        let pattern = format!(r"^(?:{}|{}|{})$", abs, now, pure);
+        let pattern = format!(r"^(?:{}|{}|{})$", abs, now, offset);
         Regex::new(&pattern).expect("invalid legal regex")
     })
 }
